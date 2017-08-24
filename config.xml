@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="co.sharptop.church.connectApp" version="16.11.12" xmlns="http://www.w3.org/ns/widgets">
-    <name>ChurchConnect</name>
+<widget id="org.trbc.churchconnect" version="16.11.12" xmlns="http://www.w3.org/ns/widgets">
+    <name>TRBC Connect</name>
     <description>
-        A mobile app to connect churches with their members.
+        Connect and interact with TRBC. View personal and family devotionals, check out groups you can connect with, watch live and archived messages, check out the calendar of events, submit prayer request and more!
     </description>
     <author email="info@churchconnectapp.org" href="http://churchconnectapp.org">
-        CurchConnect App
+        ChurchConnect App
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
