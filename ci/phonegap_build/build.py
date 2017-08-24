@@ -20,8 +20,8 @@ if __name__ == '__main__':
     }
 
     ios_key =  {
-        'id': os.environ['PHONEGAP_IOS_KEY_ID'],
-        'password': os.environ['PHONEGAP_IOS_KEY_PASSWORD']
+        'id': os.environ['DEV_PHONEGAP_IOS_KEY_ID'],
+        'password': os.environ['DEV_PHONEGAP_IOS_KEY_PASSWORD']
     }
 
     api = phonegap.API(app_id, phonegap_token)
