@@ -31,11 +31,6 @@ export class App {
         return this.userService.isAuthenticated
     }
 
-    attached() {
-        postscribe("#main", '<script type="text/javascript" src="https://content.jwplatform.com/players/ixR3OHSs-mLybEUg1.js"></script>')
-
-    }
-
     activate() {
         this.fetchConfig.configure()
         this.api.client.configure(fetchConfig => {

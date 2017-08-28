@@ -8,7 +8,7 @@
 import {inject, bindable} from "aurelia-framework";
 import {PostService, MessageService, RssPostService} from "../../services/index";
 import {Router} from "aurelia-router";
-import {App} from "../../app"
+import {App} from "../../app";
 
 @inject(PostService, Router, MessageService, RssPostService, App)
 export class PostsShow {
@@ -29,7 +29,7 @@ export class PostsShow {
             this.post = this.rssPostService.rssPost
         // Else... assume that it is a contentful post and hit the API
         } else {
-            if(!params.id) {
+            if(params.id) {
                 this.postService.findOne(params.id).promise.then((res) => {
                     this.post = res
 
