@@ -123,7 +123,12 @@
                     "moment",
                     "typer",
                     {
-                        "name":"markdown-it",
+                        "name": "postscribe",
+                        "path": "../node_modules/postscribe/dist",
+                        "main": "postscribe.min"
+                    },
+                    {
+                        "name": "markdown-it",
                         "path": "../node_modules/markdown-it/dist",
                         "main": "markdown-it"
                     },

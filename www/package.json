@@ -25,6 +25,7 @@
     "framework7": "^1.4.2",
     "markdown-it": "^8.2.2",
     "moment": "^2.15.1",
+    "postscribe": "^2.0.8",
     "showdown": "^1.4.4",
     "whatwg-fetch": "^1.0.0"
   },

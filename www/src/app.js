@@ -5,18 +5,16 @@
  * written permission of SharpTop Software, LLC. For permission requests, write to the author at info@sharptop.co.
  */
 
-import {inject, bindable} from "aurelia-framework";
+import {inject} from "aurelia-framework";
 import {AuthenticateStep, FetchConfig} from "aurelia-authentication";
 import {EventAggregator} from "aurelia-event-aggregator";
 import {F7, UserService, MessageService} from "./services/index";
 import environment from "environment";
 import {Endpoint} from "aurelia-api";
+import postscribe from "postscribe";
 
 @inject(F7, EventAggregator, UserService, Endpoint.of('api'), FetchConfig, MessageService)
 export class App {
-
-    @bindable showFooter
-
     constructor(F7, EventAggregator, UserService, api, FetchConfig, messageService) {
         this.f7 = F7
         this.events = EventAggregator
@@ -27,11 +25,15 @@ export class App {
         this.user = UserService.user
         this.api = api
         this.fetchConfig = FetchConfig
-        this.showFooter = true
     }
 
     get isAuthenticated() {
         return this.userService.isAuthenticated
+    }
+
+    attached() {
+        postscribe("#main", '<script type="text/javascript" src="https://content.jwplatform.com/players/ixR3OHSs-mLybEUg1.js"></script>')
+
     }
 
     activate() {
