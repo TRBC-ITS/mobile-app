@@ -65,7 +65,7 @@ export class NavigationService {
                 this.goToUrl(post.externalUrl)
             }
         } else {
-            if (post.isRssPost) {
+            if (post.isRssPost()) {
                 this.goToRssPost(post)
 
             } else {
@@ -80,7 +80,7 @@ export class NavigationService {
     }
 
     goToContentfulPost(post) {
-        this.rssPostService.clear()
+        this.rssPostService.clear();
         this.navigateToPost(post)
     }
 

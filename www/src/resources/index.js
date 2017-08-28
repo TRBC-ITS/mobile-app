@@ -11,6 +11,7 @@ export function configure(config) {
         './markdown-value-converter',
         './limit-to-value-converter',
         './sort-value-converter',
-        './filter-out-past-items-value-converter'
+        './filter-out-past-items-value-converter',
+        './postscribe-script-value-converter'
     ]);
 }

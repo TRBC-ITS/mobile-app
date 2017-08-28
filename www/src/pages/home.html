@@ -70,7 +70,7 @@
         <card-header title.bind="feed.liveStreamLink.title"></card-header>
         <share-link sharing-info.bind="sharingInfo.streaming"></share-link>
 
-        <button click.trigger="navigationService.go(feed.liveStreamLink.url)" class="link-button-solo">${feed.liveStreamLink.textToDisplay}</button>
+        <button click.trigger="navigationService.go(feed.liveStreamLink.post)" class="link-button-solo">${feed.liveStreamLink.textToDisplay}</button>
     </card>
 
     <!-- SONG LIST -->
