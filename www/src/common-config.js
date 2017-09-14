@@ -1,7 +1,7 @@
 export default {
     debug: false,
     testing: false,
-    apiUrl: 'http://church-api-dev2.us-east-1.elasticbeanstalk.com/',
+    apiUrl: 'http://churchconnect-trbc.us-east-1.elasticbeanstalk.com/',
     // apiUrl: 'http://localhost:8080/',
     endpoint: 'api',
     configureEndpoints: ['api'],
