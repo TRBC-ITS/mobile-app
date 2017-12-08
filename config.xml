@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="org.trbc.churchconnect" version="17.09.15" xmlns="http://www.w3.org/ns/widgets">
   
-    <name>TRBC Connect</name>
+    <name>myTRBC</name>
   
     <description>
-        Connect and interact with TRBC. View personal and family devotionals, check out groups you can connect with, watch live and archived messages, check out the calendar of events, submit prayer request and more!
+        The MyTRBC app is the best way to engage, connect and keep up with what’s going on at Thomas Road in Lynchburg, VA. Follow along in service with our sermon notes, read daily and weekly devotionals for you and your family and partner with us financially to continue the work of changing our world by loving God and loving People....all right here in the app!
     </description>
 
     <author email="info@churchconnectapp.org" href="http://churchconnectapp.org">
