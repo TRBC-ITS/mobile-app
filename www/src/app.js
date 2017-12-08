@@ -1,19 +1,16 @@
-/*
- * Copyright (c) 2016 by SharpTop Software, LLC
- * All rights reserved. No part of this software project may be used, reproduced, distributed, or transmitted in any
- * form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior
- * written permission of SharpTop Software, LLC. For permission requests, write to the author at info@sharptop.co.
- */
-
-import {inject} from "aurelia-framework";
+import {inject, bindable} from "aurelia-framework";
 import {AuthenticateStep, FetchConfig} from "aurelia-authentication";
 import {EventAggregator} from "aurelia-event-aggregator";
 import {F7, UserService, MessageService} from "./services/index";
 import environment from "environment";
 import {Endpoint} from "aurelia-api";
+import $ from 'jquery';
 
 @inject(F7, EventAggregator, UserService, Endpoint.of('api'), FetchConfig, MessageService)
 export class App {
+
+    @bindable showFooter
+
     constructor(F7, EventAggregator, UserService, api, FetchConfig, messageService) {
         this.f7 = F7
         this.events = EventAggregator
@@ -24,6 +21,11 @@ export class App {
         this.user = UserService.user
         this.api = api
         this.fetchConfig = FetchConfig
+        this.showFooter = true
+
+        if(window.MobileAccessibility){
+            window.MobileAccessibility.usePreferredTextZoom(true);
+        }
     }
 
     get isAuthenticated() {
@@ -83,8 +85,8 @@ export class App {
 
     configureRouter(config, router) {
         config.title = 'TRBC'
-
         config.addPipelineStep('authorize', AuthenticateStep)
+        config.addPipelineStep('postcomplete', PostCompleteStep)
         config.mapUnknownRoutes({redirect: '#/home'})
 
         //TODO: move this into a Route class?
@@ -123,4 +125,14 @@ export class App {
         this.f7.closePanel()
     }
 
+}
+
+class PostCompleteStep {
+    run(routingContext, next) {
+        // Doing document.querySelector(".page-content") doesn't work. For the life of me I can't understand why.
+        // Go figure the jQuery selector works tho?!?!?
+        $(".page-content").scrollTop(0)
+
+        return next()
+    }
 }

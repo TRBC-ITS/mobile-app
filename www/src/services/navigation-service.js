@@ -1,7 +1,7 @@
 import {inject} from "aurelia-framework";
 import {Router} from "aurelia-router";
 import {RssPostService} from "./rss-post-service";
-import { Event, Post, PostGroup, PrayerRequest } from 'models/index'
+import { Event, Link, Post, PostGroup, PrayerRequest } from 'models/index'
 
 
 @inject(Router, RssPostService)
@@ -20,6 +20,14 @@ export class NavigationService {
         }
     }
 
+    getPostGroupDestination(postGroup) {
+        if(postGroup.postGroups.length > 0 || !postGroup.hasOnePost()) {
+            this.go(postGroup)
+        } else {
+            this.go(postGroup.lastPost)
+        }
+    }
+
     goToStringLink(link) {
         if (this.isInternalUrl(link)) {
             this.router.navigate(link)
@@ -29,7 +37,9 @@ export class NavigationService {
     }
 
     goToObjectLink(object) {
-        if (object instanceof PostGroup) {
+        if (object instanceof Link) {
+            this.goToLink(object)
+        } else if (object instanceof PostGroup) {
             this.goToPostGroup(object)
 
         } else if (object instanceof Event) {
@@ -50,6 +60,20 @@ export class NavigationService {
         return where.substring(0, 2).toLowerCase() === '#/'
     }
 
+    /**
+     * Navigates to a Link object
+     * @param link
+     */
+    goToLink(link) {
+        if (link.url) {
+            this.goToUrl(link.url)
+        } else if (link.post) {
+            this.goToPost(link.post)
+        } else {
+            console.log("Cannot navigate to", object)
+        }
+    }
+
     goToEvent(event) {
         this.router.navigate(`#/events/show/${event.id}`)
     }
@@ -60,9 +84,13 @@ export class NavigationService {
 
     goToPost(post) {
         if (post.externalUrl) {
-            this.goToUrl(post.externalUrl)
+            if(post.useIframe) {
+                this.goToContentfulPost(post)
+            } else {
+                this.goToUrl(post.externalUrl)
+            }
         } else {
-            if (post.isRssPost) {
+            if (post.isRssPost()) {
                 this.goToRssPost(post)
 
             } else {
